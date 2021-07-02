@@ -3,7 +3,7 @@
 const express = require('express');
 const app = express();
 const MONGODB_URI =process.env.MONGODB_URI ;
-
+const cors=require('cors')
 
 const mongoose = require('mongoose');
 const storageStoreRouter=require('./routes/myStoreStorage');
@@ -16,7 +16,7 @@ mongoose.connect(MONGODB_URI, {
   useCreateIndex: true,
 }).then(() => console.log('you connect to the DB')).catch(err => console.log(err));
 
-
+app.use(cors())
 app.use(express.json());
 
 app.use('/store',storageStoreRouter);
