@@ -44,7 +44,7 @@ async function updateItem(request,response) {
 }
 
 async function deleteItem(request, response) {
-  let id = parseInt(request.params.id);
+  let id = request.params.id;
   await MySchemaInstance.delete(id);
   response.status(200).send('item deleted');
 }

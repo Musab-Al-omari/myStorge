@@ -17,7 +17,7 @@ router.delete('/:id', deleteToDo);
 
 async function getAllToDo(request,response) {
   let allDataBace= await MyToDoInstance.get();
-  console.log('hi',allDataBace);
+  // console.log('hi',allDataBace);
   response.json(allDataBace);
 }
 async function createToDo(request,response) {
@@ -27,7 +27,7 @@ async function createToDo(request,response) {
     
 }
 async function deleteToDo(request,response) {
-  let id = parseInt(request.params.id);
+  let id = request.params.id;
   await MyToDoInstance.delete(id);
   response.status(200).send('item deleted');
     
