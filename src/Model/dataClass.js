@@ -2,20 +2,17 @@
 
 
 class MyModel{
-    constructor(schema){
-        this.schema=schema;
+  constructor(schema){
+    this.schema=schema;
+  }
+
+  get(_id){
+    if (_id) {
+      return this.schema.findById(_id); 
+    }else{
+      return this.schema.find({}); 
     }
-
-
-
-
-    get(_id){
-        if (_id) {
-            return this.schema.findById(_id) 
-        }else{
-            return this.schema.find({}) 
-        }
-    }
+  }
     
   getBy(obj) {
     return this.schema.find(obj);
@@ -36,4 +33,4 @@ class MyModel{
 
 
 }
-module.exports=MyModel
+module.exports=MyModel;
