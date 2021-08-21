@@ -3,6 +3,6 @@ the url: https://sadsadasdasnihad.herokuapp.com
 
 
 the routs : 
-/bookApp    methods : -get/ -get/:id -post/ -put/:id -delete/:id
-/store
-/todo
+1- /bookApp    methods : -get/ -get/:id -post/ -put/:id -delete/:id
+2- /store
+3- /todo
