@@ -18,33 +18,61 @@ router.delete('/:id', deleteBookApp);
 
 
 async function getAllBookApp(request, response) {
-  let allDataBace = await MyBookAppInstance.get();
-  response.json(allDataBace);
+  try {
+    let allDataBace = await MyBookAppInstance.get();
+    response.json(allDataBace);
+  } catch (error) {
+    response.status(500).json({ error: error });
+
+  }
 }
 
 async function getOneItem(request, response) {
-  let id = parseInt(request.params.id);
-  let oneItem = await MyBookAppInstance.get(id);
-  response.json(oneItem);
+  try {
+    let id = parseInt(request.params.id);
+    let oneItem = await MyBookAppInstance.get(id);
+    response.json(oneItem);
+  } catch (error) {
+    response.status(500).json({ error: error });
+
+  }
 
 }
 async function updateItem(request, response) {
-  let id = request.params.id;
-  let theFrontBody = request.body;
-  let updateItem = await MyBookAppInstance.update(id, theFrontBody);
-  response.status(201).json(updateItem);
+  try {
+    let id = request.params.id;
+    let theFrontBody = request.body;
+    let updateItem = await MyBookAppInstance.update(id, theFrontBody);
+    response.status(201).json(updateItem);
+  } catch (error) {
+    response.status(500).json({ error: error });
+  }
 }
+
+
 async function createBookApp(request, response) {
-  let theFrontBody = request.body;
-  let createItem = await MyBookAppInstance.create(theFrontBody);
-  response.status(201).json(createItem);
+  try {
+    let theFrontBody = request.body;
+    let createItem = await MyBookAppInstance.create(theFrontBody);
+    response.status(201).json(createItem);
+
+  } catch (error) {
+    response.status(500).json({ error: error });
+
+  }
 
 }
-async function deleteBookApp(request, response) {
-  let id = request.params.id;
-  await MyBookAppInstance.delete(id);
-  response.status(200).send('item deleted');
 
+
+async function deleteBookApp(request, response) {
+  try {
+    let id = request.params.id;
+    await MyBookAppInstance.delete(id);
+    response.status(200).send('item deleted');
+  } catch (error) {
+    response.status(500).json({ error: error });
+
+  }
 }
 
 
